@@ -1,12 +1,11 @@
 package org.example.lesson_1
 
-// кол-во покупок, var т.к. изменяемая
-var orderCount: Int = 0
-
 // благодарность, делаем либо val либо const на уровне класса
 const val gratitudeMessage: String = "Thank for you purchase!"
 
 fun main() {
+// кол-во покупок, var т.к. изменяемая
+    var orderCount: Int = 0
 
     println("order count $orderCount, gratitude message  $gratitudeMessage")
 

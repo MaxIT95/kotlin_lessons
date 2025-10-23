@@ -1,25 +1,23 @@
 package lesson_2
 
+const val COUNT_MINUTES_OR_SECONDS: Int = 60
+
+const val LOG_TIME_TEMPLATE: String = "%02d"
+
 fun main() {
 
     val departureHour: Int = 9
     val departureMinutes: Int = 39
     val travelMinutes: Int = 457
-    val countMinutesOrSeconds: Int = 60
 
-    val minutes: Int = departureMinutes + (departureHour * countMinutesOrSeconds)
+    val minutes: Int = departureMinutes + (departureHour * COUNT_MINUTES_OR_SECONDS)
 
-    val minutesArrival = minutes + travelMinutes
+    val summaryMinutesAfterArrival = minutes + travelMinutes
 
-    println("Час прибытия ${formatIntAsString(minutesArrival / countMinutesOrSeconds)}")
-    println("Минуты прибытия ${formatIntAsString(minutesArrival % countMinutesOrSeconds)}")
-}
+    val hoursArrival: Int = summaryMinutesAfterArrival / COUNT_MINUTES_OR_SECONDS
+    val minutesArrival: Int = summaryMinutesAfterArrival % COUNT_MINUTES_OR_SECONDS
 
-fun formatIntAsString(someInt: Int): String {
-
-    return if (someInt.toString().length == 1) {
-        "0$someInt"
-    } else {
-        someInt.toString()
-    }
+    println("%02d".format(hoursArrival))
+    println("Час прибытия ${LOG_TIME_TEMPLATE.format(hoursArrival)}")
+    println("Минуты прибытия ${LOG_TIME_TEMPLATE.format(minutesArrival)}")
 }

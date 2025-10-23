@@ -1,21 +1,14 @@
-package org.example.lesson_2
+package lesson_2
 
-import kotlin.math.round
+import kotlin.math.pow
 
 fun main() {
 
-    val firstPayment: Int = 70000
+    val deposit: Double = 70000.0
     val creditPercent: Double = 16.7
     val period: Int = 20
 
-    val count = (1 + (creditPercent / 100) / 1)
-    var totalAmount: Double = firstPayment * count
+    val totalAmount: Double = deposit * (1 + (creditPercent / 100) / 1).pow(period)
 
-    var i = 1
-
-    while (i < period) {
-        totalAmount = totalAmount * count
-        i++
-    }
-    println("Итоговая сумма ${round(totalAmount * 1000) / 1000}")
+    println("Итоговая сумма ${"%.3f".format(totalAmount)}")
 }

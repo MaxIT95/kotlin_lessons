@@ -17,7 +17,6 @@ fun main() {
     val hoursArrival: Int = summaryMinutesAfterArrival / COUNT_MINUTES_OR_SECONDS
     val minutesArrival: Int = summaryMinutesAfterArrival % COUNT_MINUTES_OR_SECONDS
 
-    println("%02d".format(hoursArrival))
     println("Час прибытия ${LOG_TIME_TEMPLATE.format(hoursArrival)}")
     println("Минуты прибытия ${LOG_TIME_TEMPLATE.format(minutesArrival)}")
 }

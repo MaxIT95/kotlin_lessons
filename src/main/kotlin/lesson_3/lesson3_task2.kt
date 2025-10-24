@@ -4,15 +4,14 @@ const val FIO_TEMPLATE: String = "ФИО %s %s %s, возраст %s"
 
 fun main() {
     val name: String = "Татьяна"
-    val surname: String = "Андреева"
+    var surname: String = "Андреева"
     val patronymic: String = "Сергеевна"
 
     var age: Int = 20
 
-    println(FIO_TEMPLATE.format(surname, name, patronymic, age))
+    println("ФИО $surname $name $patronymic, возраст $age")
     age = 22
-    val surnameAfterMarriage: String = "Сидорова"
+    surname = "Сидорова"
 
-    println(FIO_TEMPLATE.format(surnameAfterMarriage, name, patronymic, age))
-
+    println("ФИО $surname $name $patronymic, возраст $age")
 }

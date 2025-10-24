@@ -1,17 +1,15 @@
 package lesson_3
 
-const val GREETING_DAY: String = "Добрый день %s"
-const val GREETING_EVENING: String = "Добрый вечер %s"
+const val GREETING_DAY: String = "Добрый день"
+const val GREETING_EVENING: String = "Добрый вечер"
 
 fun main() {
 
     val userName: String = "Юрий"
-    var greetingMessage: String? = null
+    var greetingMessage: String = "$GREETING_DAY, $userName"
 
-    greetingMessage = GREETING_DAY.format(userName)
     println(greetingMessage)
 
-    greetingMessage = GREETING_EVENING.format(userName)
+    greetingMessage = "$GREETING_EVENING $userName"
     println(greetingMessage)
-
 }

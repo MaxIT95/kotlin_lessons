@@ -1,7 +1,5 @@
 package lesson_3
 
-const val FIO_TEMPLATE: String = "ФИО %s %s %s, возраст %s"
-
 fun main() {
     val name: String = "Татьяна"
     var surname: String = "Андреева"

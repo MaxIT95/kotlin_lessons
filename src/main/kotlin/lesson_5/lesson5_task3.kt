@@ -7,10 +7,10 @@ fun main() {
     correctRangerNumbers.forEach { correctNumbersList.add(it) }
 
     println("Введите первое число")
-    val firstNumber: Int = readLine()?.toInt() ?: -1
+    val firstNumber: Int = readln().toInt()
 
     println("Введите второе число")
-    val secondNumber: Int = readLine()?.toInt() ?: -1
+    val secondNumber: Int = readln().toInt()
 
     if (firstNumber in correctRangerNumbers && secondNumber in correctRangerNumbers) {
         println("Поздравляем! Вы выиграли главный приз!")

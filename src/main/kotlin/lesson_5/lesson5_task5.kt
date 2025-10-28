@@ -2,6 +2,8 @@ package lesson_5
 
 import kotlin.random.Random
 
+const val COUNT_NUMBERS = 3
+
 fun main() {
 
     val winNumbers = generateRandomNumbers()
@@ -10,7 +12,7 @@ fun main() {
 
     var i = 0
 
-    while (i < 3) {
+    while (i < COUNT_NUMBERS) {
         println("Введите число")
         val number = readln().toInt()
         inputNumbers.add(number)
@@ -31,8 +33,11 @@ fun generateRandomNumbers(): List<Int> {
 
     val numbers = mutableListOf<Int>()
 
-    for (i in 0..2) {
+    var i = 0
+
+    while (i < COUNT_NUMBERS) {
         numbers.add(Random.nextInt(0, 42))
+        i++
     }
     return numbers
 }

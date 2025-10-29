@@ -15,7 +15,8 @@ fun main() {
     val weatherIsGood: Boolean = readLine().toBoolean()
 
     val isShipSetSail =
-        (isShipBroken == SHIP_NOT_BROKEN && MIN_WORKERS <= workersCount && workersCount <= MAX_WORKERS && 50 < MIN_BOX_FOODS)
+        (isShipBroken == SHIP_NOT_BROKEN && MIN_WORKERS <= workersCount && workersCount <= MAX_WORKERS
+                && MIN_BOX_FOODS < boxFoodCount)
                 || (isShipBroken == SHIP_IS_BROKEN && workersCount == MAX_WORKERS
                 && MIN_BOX_FOODS <= boxFoodCount && weatherIsGood == WEATHER_IS_GOOD)
 

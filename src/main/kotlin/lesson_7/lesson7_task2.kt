@@ -7,7 +7,7 @@ fun main() {
 
     val range = 1000..9999
 
-    var codeAuthorization: Int?
+    var codeAuthorization: Int
 
     while (true) {
         codeAuthorization = Random.nextInt(range)

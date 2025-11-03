@@ -10,7 +10,7 @@ fun main() {
     var codeAuthorization: Int
 
     while (true) {
-        codeAuthorization = Random.nextInt(range)
+        codeAuthorization = range.random()
         println("Ваш код авторизации: $codeAuthorization")
         println("Введите код авторизации")
         val codeFromUser = readln()

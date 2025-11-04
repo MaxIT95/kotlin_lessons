@@ -11,7 +11,9 @@ fun main() {
     println("Введите кол-во порций")
     val count = readln().toInt()
 
-    println("На $count порций вам понадобится: Яиц – ${ingredientForOnPortion.get(0) * count}," +
-            " молока – ${ingredientForOnPortion.get(1) * count}, " +
-            "сливочного масла – ${ingredientForOnPortion.get(2) * count}")
+    println(
+        "На $count порций вам понадобится: Яиц – ${ingredientForOnPortion[0] * count}," +
+                " молока – ${ingredientForOnPortion[1] * count}, " +
+                "сливочного масла – ${ingredientForOnPortion[2] * count}"
+    )
 }

@@ -1,5 +1,7 @@
 package lesson_8
 
+const val PRODUCT_NOT_FOUND = -1
+
 fun main() {
 
     val ingredients = arrayOf("помидор", "огурец", "свинина", "соль")
@@ -7,11 +9,11 @@ fun main() {
     println("Введите ингридиент для замены")
 
     val ingredientForReplacement = readln()
+    val indexReplacement = ingredients.indexOf(ingredientForReplacement)
 
-    if (ingredients.contains(ingredientForReplacement)) {
+    if (indexReplacement != PRODUCT_NOT_FOUND) {
         println("Чем заменить данный ингридиент?")
         val newIngredient = readln()
-        val indexReplacement = ingredients.indexOf(ingredientForReplacement)
         ingredients[indexReplacement] = newIngredient
         println("Готово! Вы сохранили следующий список: ${ingredients.joinToString(", ")}")
     } else {

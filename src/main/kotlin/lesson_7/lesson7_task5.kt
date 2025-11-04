@@ -20,12 +20,10 @@ fun main() {
 
     val listChars = mutableListOf<Char>()
 
-    // первые три символа заполняем из трех range
     listChars.add(downCharRange.random())
     listChars.add(upperCharRange.random())
     listChars.add(numberRange.random())
 
-    // далее рандом на оставшееся кол-во символов
     for (i in 1..passwordLength - INIT_COUNT_CHAR) {
         val char = allCharsAndNumbersRange.random()
         listChars.add(char)

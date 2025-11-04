@@ -7,9 +7,7 @@ fun main() {
     println("Введите ингридиент")
     val ingredientFromUser = readln()
 
-    var isExistIngredientInReceipt = ingredients.contains(ingredientFromUser)
-
-    if (isExistIngredientInReceipt) {
+    if (ingredientFromUser in ingredients) {
         println("Ингредиент $ingredientFromUser в рецепте есть")
     } else {
         println("Такого ингредиента в рецепте нет")

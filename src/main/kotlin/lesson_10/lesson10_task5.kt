@@ -2,6 +2,7 @@ package lesson_10
 
 const val LOGIN = "user"
 const val PASSWORD = "password"
+const val TOKEN_LENGTH = 32
 
 fun main() {
 
@@ -23,9 +24,27 @@ fun authorization(): String? {
     val password = readln()
 
     if (login == LOGIN && password == PASSWORD) {
-        return "sdfsdg"
+        return generateToken()
     }
     return null
+}
+
+fun generateToken(): String {
+    val lettersRange = ('a'..'z') + ('A'..'Z')
+    val numbersRange = '0'..'9'
+    val tokenArray = CharArray(TOKEN_LENGTH)
+
+    var i = 0
+
+    while (i < TOKEN_LENGTH) {
+        if (i % 2 == 0) {
+            tokenArray[i] = lettersRange.random()
+        } else {
+            tokenArray[i] = numbersRange.random()
+        }
+        i++
+    }
+    return tokenArray.joinToString("")
 }
 
 fun getBucket(): List<String> {

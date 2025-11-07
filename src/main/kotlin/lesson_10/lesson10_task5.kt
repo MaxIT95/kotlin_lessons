@@ -34,16 +34,13 @@ fun generateToken(): String {
     val numbersRange = '0'..'9'
     val tokenArray = CharArray(TOKEN_LENGTH)
 
-    var i = 0
 
-    while (i < TOKEN_LENGTH) {
+    for (i in 0.rangeUntil(TOKEN_LENGTH))
         if (i % 2 == 0) {
             tokenArray[i] = lettersRange.random()
         } else {
             tokenArray[i] = numbersRange.random()
         }
-        i++
-    }
     return tokenArray.joinToString("")
 }
 

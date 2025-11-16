@@ -2,12 +2,12 @@ package lesson_12
 
 fun main() {
 
-    val firstWeatherInfo = DayWeatherDto(7, 3, true)
+    val firstWeatherInfo = DayWeatherDtoObject(7, 3, true)
 
     println(firstWeatherInfo)
 }
 
-class DayWeatherDto(kelvinDayTemperature: Int, kelvinNightTemperature: Int, initIsPrecipitation: Boolean) {
+class DayWeatherDtoObject(kelvinDayTemperature: Int, kelvinNightTemperature: Int, initIsPrecipitation: Boolean) {
 
     companion object Constants {
         const val ABSOLUTE_ZERO = 273.15

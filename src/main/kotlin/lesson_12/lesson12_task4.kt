@@ -1,13 +1,11 @@
 package lesson_12
 
-const val ABSOLUTE_ZERO = 273.15
-
 fun main() {
 
-    val firstWeatherInfo = DayWeatherDto(7, 3, true)
+    val firstWeatherInfo = DayWeatherDtoInfo(7, 3, true)
 }
 
-class DayWeatherDto(var dayTemperature: Int, var nightTemperature: Int, var isPrecipitation: Boolean) {
+class DayWeatherDtoInfo(var dayTemperature: Int, var nightTemperature: Int, var isPrecipitation: Boolean) {
 
     init {
         this.dayTemperature = (dayTemperature - ABSOLUTE_ZERO).toInt()

@@ -12,11 +12,11 @@ fun main() {
 
     while (true) {
         println("введите имя контакта")
-        name = readln();
+        name = readln()
         println("введите номер телефона")
-        phone = readln().toLongOrNull();
+        phone = readln().toLongOrNull()
         println("введите название компании")
-        company = readln();
+        company = readln()
         contacts.addContact(PhoneContact(name, phone, company))
         println("Добавить еще один контакт? да/нет")
         if (readln().equals(YES, true)) {

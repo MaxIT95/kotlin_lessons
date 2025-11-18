@@ -17,7 +17,12 @@ fun main() {
         phone = readln().toLongOrNull()
         println("введите название компании")
         company = readln()
-        contacts.addContact(PhoneContact(name, phone, company))
+
+        if (company.isEmpty()) {
+            contacts.addContact(PhoneContact(name, phone, null))
+        } else {
+            contacts.addContact(PhoneContact(name, phone, company))
+        }
         println("Добавить еще один контакт? да/нет")
         if (readln().equals(YES, true)) {
             continue
@@ -28,7 +33,7 @@ fun main() {
 
 }
 
-class ContactDictionary() {
+class ContactDictionary {
 
     val listContact = mutableListOf<PhoneContact>()
 

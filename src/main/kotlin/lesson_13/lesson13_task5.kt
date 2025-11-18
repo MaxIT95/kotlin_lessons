@@ -25,9 +25,9 @@ fun main() {
         company = readln()
 
         if (company.isEmpty()) {
-            contacts.addContact(PhoneContact(name, phone, null))
+            contacts.addContact(PhoneContactDto(name, phone, null))
         } else {
-            contacts.addContact(PhoneContact(name, phone, company))
+            contacts.addContact(PhoneContactDto(name, phone, company))
         }
         println("Добавить еще один контакт? да/нет")
         if (readln().equals(YES, true)) {
@@ -41,9 +41,9 @@ fun main() {
 
 class ContactDictionaryDto {
 
-    val listContact = mutableListOf<PhoneContact>()
+    val listContact = mutableListOf<PhoneContactDto>()
 
-    fun addContact(contact: PhoneContact) {
+    fun addContact(contact: PhoneContactDto) {
         if (contact.telephoneNumber == null) {
             println("Номер телефона обязательное поле!")
         } else {
@@ -57,7 +57,7 @@ class ContactDictionaryDto {
 }
 
 
-class PhoneContact(val name: String, val telephoneNumber: Long?, val company: String? = null) {
+class PhoneContactDto(val name: String, val telephoneNumber: Long?, val company: String? = null) {
 
     override fun toString(): String {
         return "- Имя: $name\n" +

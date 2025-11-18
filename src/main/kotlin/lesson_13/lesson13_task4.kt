@@ -1,5 +1,6 @@
 package lesson_13
 
+const val YES = "да"
 
 fun main() {
 
@@ -17,9 +18,14 @@ fun main() {
         println("введите название компании")
         company = readln();
         contacts.addContact(PhoneContact(name, phone, company))
-
-        println("Контакты: $contacts")
+        println("Добавить еще один контакт? да/нет")
+        if (readln().equals(YES, true)) {
+            continue
+        }
+        break
     }
+    println("Контакты: $contacts")
+
 }
 
 class ContactDictionary() {
@@ -43,7 +49,7 @@ class ContactDictionary() {
 class PhoneContact(val name: String, val telephoneNumber: Long?, val company: String? = null) {
 
     override fun toString(): String {
-        return  "- Имя: $name\n" +
+        return "- Имя: $name\n" +
                 "- Номер: $telephoneNumber\n" +
                 "- Компания: ${company ?: "<не указано>"}"
     }

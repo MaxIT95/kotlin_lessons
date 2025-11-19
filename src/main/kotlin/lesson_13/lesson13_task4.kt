@@ -1,6 +1,6 @@
 package lesson_13
 
-const val YES = "да"
+const val NO = "нет"
 
 fun main() {
 
@@ -16,18 +16,16 @@ fun main() {
         println("введите номер телефона")
         phone = readln().toLongOrNull()
         println("введите название компании")
-        company = readln()
-
-        if (company.isEmpty()) {
-            contacts.addContact(PhoneContact(name, phone, null))
+        company = readln().let { it.ifEmpty { null } }
+        if (phone == null) {
+            println("Номер телефона обязательное поле!")
         } else {
             contacts.addContact(PhoneContact(name, phone, company))
+            println("Добавить еще один контакт? да/нет")
+            if (readln().equals(NO, true)) {
+                break
+            }
         }
-        println("Добавить еще один контакт? да/нет")
-        if (readln().equals(YES, true)) {
-            continue
-        }
-        break
     }
     println("Контакты: $contacts")
 
@@ -38,11 +36,7 @@ class ContactDictionary {
     val listContact = mutableListOf<PhoneContact>()
 
     fun addContact(contact: PhoneContact) {
-        if (contact.telephoneNumber == null) {
-            println("Номер телефона обязательное поле!")
-        } else {
-            listContact.add(contact)
-        }
+        listContact.add(contact)
     }
 
     override fun toString(): String {
@@ -51,7 +45,7 @@ class ContactDictionary {
 }
 
 
-class PhoneContact(val name: String, val telephoneNumber: Long?, val company: String? = null) {
+class PhoneContact(val name: String, val telephoneNumber: Long, val company: String? = null) {
 
     override fun toString(): String {
         return "- Имя: $name\n" +

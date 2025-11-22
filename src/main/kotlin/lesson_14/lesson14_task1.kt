@@ -11,7 +11,7 @@ fun main() {
     liner.demoAbility()
 }
 
-abstract class BaseLiner(
+open class Liner(
     val speed: Int = 0,
     val liftingCapacity: Int = 0,
     val ability: String?
@@ -22,21 +22,15 @@ abstract class BaseLiner(
     }
 }
 
-class Liner(
-    speed: Int = 0,
-    liftingCapacity: Int = 0,
-    ability: String?
-) : BaseLiner(speed, liftingCapacity, ability)
-
 class IceBreaker(
     speed: Int,
     liftingCapacity: Int,
     ability: String?
-) : BaseLiner(speed, liftingCapacity, ability)
+) : Liner(speed, liftingCapacity, ability)
 
 class Cargo(
     speed: Int,
     liftingCapacity: Int,
     ability: String?
-) : BaseLiner(speed, liftingCapacity, ability)
+) : Liner(speed, liftingCapacity, ability)
 

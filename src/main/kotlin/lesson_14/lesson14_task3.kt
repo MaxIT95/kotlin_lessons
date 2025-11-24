@@ -1,7 +1,10 @@
 package lesson_14
 
+import kotlin.math.pow
+
 const val BLACK_COLOR = "black"
 const val WHITE_COLOR = "white"
+const val PI_NUMBER = 3.14
 
 fun main() {
 
@@ -11,12 +14,14 @@ fun main() {
         Rectangle(3, 4, BLACK_COLOR),
         Rectangle(9, 1, WHITE_COLOR)
     )
-    println("Сумма периметров всех черный фигур: ${
-        figures.filter { it.color == BLACK_COLOR }.sumOf { it.getPerimeter() }
-    }")
-    println("Сумма площадей всех белых фигур: ${
-        figures.filter { it.color == WHITE_COLOR }.sumOf { it.getSquare() }
-    }")
+    println(
+        "Сумма периметров всех черный фигур: ${
+            figures.filter { it.color == BLACK_COLOR }.sumOf { it.getPerimeter() }
+        }")
+    println(
+        "Сумма площадей всех белых фигур: ${
+            figures.filter { it.color == WHITE_COLOR }.sumOf { it.getSquare() }
+        }")
 }
 
 abstract class Figure(val color: String) {
@@ -28,11 +33,11 @@ abstract class Figure(val color: String) {
 class Shape(val radius: Int, color: String) : Figure(color) {
 
     override fun getSquare(): Double {
-        return 3.14 * (radius * radius)
+        return PI_NUMBER * radius.toDouble().pow(radius.toDouble())
     }
 
     override fun getPerimeter(): Double {
-        return 2 * 3.14 * radius
+        return 2 * PI_NUMBER * radius
     }
 }
 

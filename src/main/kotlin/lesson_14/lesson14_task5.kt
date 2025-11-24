@@ -19,9 +19,10 @@ class Chat() {
 
     var messages = mutableListOf<Message>()
     var childMessages = mutableListOf<ChildMessage>()
+    var id = 1
 
     fun addMessage(author: String, text: String): BaseMessage {
-        val message = Message(Random.nextInt(), author, text)
+        val message = Message(id++, author, text)
         messages.add(message)
 
         return message

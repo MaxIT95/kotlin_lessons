@@ -12,10 +12,11 @@ fun main() {
 
 class WeatherServer {
     fun sendRequestToServer(request: WeatherStationStats) {
-        if (request::class == Temperature::class) {
-            println("Temperature ${request.value} C")
-        } else {
-            println("PrecipitationAmount ${request.value}%")
+
+        when (request) {
+            is Temperature -> println("Temperature ${request.value} C")
+            is PrecipitationAmount -> println("PrecipitationAmount ${request.value}%")
+            else -> println("Unknown request type ${request.value}")
         }
     }
 }

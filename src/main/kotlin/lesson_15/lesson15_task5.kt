@@ -6,12 +6,12 @@ fun main() {
 
     jeep.loadingPassengers(3)
     jeep.ride()
-    jeep.unloadingCargo(3)
+    jeep.unloadingPassengers(3)
     println("Jeep transported 3 passenger")
 
     jeep.loadingPassengers(3)
     jeep.ride()
-    jeep.unloadingCargo(3)
+    jeep.unloadingPassengers(3)
     println("Jeep transported 3 passenger")
 
     val cargoCar = CargoCar(1, 2)
@@ -58,9 +58,9 @@ abstract class Vehicle(var passengerCapacity: Int?, var cargoCapacity: Int?) : P
 
     override fun unloadingPassengers(passengers: Int) {
         if (passengerCapacity != null) {
-            println("Unloading cargo $passengers")
-            this.passengerCapacity = this.passengerCapacity!! - passengers
-            println("Current cargo loaded: $passengerCurrentCount")
+            println("Unloading passengers $passengers")
+            this.passengerCurrentCount -= passengers
+            println("Current passengers loaded: $passengerCurrentCount")
         }
     }
 

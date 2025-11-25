@@ -13,10 +13,10 @@ fun main() {
 
 abstract class SimpleUser(val name: String) {
 
-    var messageId: Int = 0
+    var messageId: Int = 1
 
     fun readForum() {
-        println("$name readForum...")
+        println("$name read forum...")
     }
 
     fun writeMessage(message: String): Int {

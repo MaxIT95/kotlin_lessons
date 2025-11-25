@@ -2,7 +2,7 @@ package lesson_15
 
 fun main() {
 
-    val jeep = Jeep(3);
+    val jeep = Jeep(3)
 
     jeep.loadingPassengers(3)
     jeep.ride()
@@ -38,31 +38,27 @@ interface VehicleMoving {
     }
 }
 
-abstract class Vehicle(var passengerCapacity: Int?, var cargoCapacity: Int?) : PassengerTransporting,
+abstract class Vehicle(var passengerCapacity: Int, var cargoCapacity: Int?) : PassengerTransporting,
     CargoTransporting, VehicleMoving {
 
     var cargoCurrentCount = 0
     var passengerCurrentCount = 0
 
     override fun loadingPassengers(passengers: Int) {
-        if (passengerCapacity != null) {
-            if (passengerCurrentCount + passengers <= passengerCapacity!!) {
+            if (passengerCurrentCount + passengers <= passengerCapacity) {
                 println("Loading passengers: $passengers")
                 this.passengerCurrentCount += passengers
                 println("Current passengers loaded: $passengerCurrentCount")
             } else {
                 println("Transport is overloading by passengers!")
-            }
         }
     }
 
     override fun unloadingPassengers(passengers: Int) {
-        if (passengerCapacity != null) {
             println("Unloading passengers $passengers")
             this.passengerCurrentCount -= passengers
             println("Current passengers loaded: $passengerCurrentCount")
         }
-    }
 
     override fun loadingCargo(cargo: Int) {
         if (cargoCapacity != null) {
@@ -77,8 +73,8 @@ abstract class Vehicle(var passengerCapacity: Int?, var cargoCapacity: Int?) : P
     override fun unloadingCargo(cargo: Int) {
         if (cargoCapacity != null) {
             println("Unloading cargo $cargo")
-            this.cargoCapacity = this.cargoCapacity!! - cargo
-            println("Current cargo loaded: $passengerCurrentCount")
+            this.cargoCurrentCount -= cargo
+            println("Current cargo loaded: $cargoCurrentCount")
         }
     }
 

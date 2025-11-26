@@ -4,65 +4,33 @@ fun main() {
 
     val jeep = Jeep(3)
 
-    jeep.loadingPassengers(3)
+    jeep.loadPassengers(3)
     jeep.ride()
-    jeep.unloadingPassengers(3)
+    jeep.unloadPassengers(3)
     println("Jeep transported 3 passenger")
 
-    jeep.loadingPassengers(3)
+    jeep.loadPassengers(3)
     jeep.ride()
-    jeep.unloadingPassengers(3)
+    jeep.unloadPassengers(3)
     println("Jeep transported 3 passenger")
 
     val cargoCar = CargoCar(1, 2)
-    cargoCar.loadingCargo(2)
+    cargoCar.loadCargo(2)
     cargoCar.ride()
-    cargoCar.unloadingCargo(2)
+    cargoCar.unloadCargo(2)
 
     println("Cargo car transported 2 cargo")
 }
 
 interface PassengerTransporting {
-
-    fun loadingPassengers(passengers: Int) {
-        if (getCurrentPassengers() + passengers <= getPassengerCapacity()) {
-            println("Loading passengers: $passengers")
-            setCurrentPassengers(getCurrentPassengers() + passengers)
-            println("Current passengers loaded: ${getCurrentPassengers()}")
-        } else {
-            println("Transport is overloading by passengers!")
-        }
-    }
-
-    fun unloadingPassengers(passengers: Int) {
-        println("Unloading passengers $passengers")
-        setCurrentPassengers(getCurrentPassengers() - passengers)
-        println("Current passengers loaded: ${getCurrentPassengers()}")
-    }
-
-    fun getPassengerCapacity(): Int
-    fun getCurrentPassengers(): Int
-    fun setCurrentPassengers(value: Int)
+    fun loadPassengers(passengers: Int)
+    fun unloadPassengers(passengers: Int)
 }
 
 interface CargoTransporting {
-    fun loadingCargo(cargo: Int) {
-        if (getValueCurrentCargo() + cargo <= getValueCargoCapacity()) {
-            println("Loading cargo $cargo")
-            setValueCurrentCargo(getValueCurrentCargo() + cargo)
-            println("Current cargo loaded: ${getValueCurrentCargo()}")
-        }
-    }
 
-    fun unloadingCargo(cargo: Int) {
-        println("Unloading cargo $cargo")
-        setValueCurrentCargo(getValueCargoCapacity() - cargo)
-        println("Current cargo loaded: ${getValueCurrentCargo()}")
-    }
-
-    fun getValueCargoCapacity(): Int
-    fun getValueCurrentCargo(): Int
-    fun setValueCurrentCargo(value: Int)
+    fun loadCargo(cargo: Int)
+    fun unloadCargo(cargo: Int)
 }
 
 interface VehicleMoving {
@@ -71,51 +39,60 @@ interface VehicleMoving {
     }
 }
 
-class CargoCar(
-    val passengersCapacity: Int, val cargoCapacity: Int
-) : CargoTransporting, PassengerTransporting, VehicleMoving {
+class CargoCar(val maxPassengers: Int, val maxCargo: Int) : CargoTransporting, PassengerTransporting,
+    VehicleMoving {
 
     var currentCargo = 0
-    var currentPassCounts = 0
+    var currentPassengers = 0
 
-    override fun getValueCargoCapacity(): Int {
-        return this.cargoCapacity
+    override fun loadCargo(cargo: Int) {
+        if (currentCargo + cargo <= maxCargo) {
+            println("Loading cargo $cargo")
+            this.currentCargo += cargo
+            println("Current cargo loaded: $currentCargo")
+        }
     }
 
-    override fun getValueCurrentCargo(): Int {
-        return this.currentCargo
+    override fun unloadCargo(cargo: Int) {
+        println("Unloading cargo $cargo")
+        this.currentCargo -= cargo
+        println("Current cargo loaded: $currentCargo")
     }
 
-    override fun setValueCurrentCargo(value: Int) {
-        this.currentCargo = value
+    override fun loadPassengers(passengers: Int) {
+        if (currentPassengers + passengers <= maxPassengers) {
+            println("Loading passengers: $passengers")
+            currentPassengers += passengers
+            println("Current passengers loaded: $currentPassengers")
+        } else {
+            println("Jeep is overloading by passengers!")
+        }
     }
 
-    override fun getPassengerCapacity(): Int {
-        return passengersCapacity
-    }
-
-    override fun getCurrentPassengers(): Int {
-        return currentPassCounts
-    }
-
-    override fun setCurrentPassengers(value: Int) {
-        this.currentPassCounts = value
+    override fun unloadPassengers(passengers: Int) {
+        println("Unloading passengers $passengers from Jeep")
+        currentPassengers -= passengers
+        println("Current passengers in Jeep loaded: $currentPassengers")
     }
 }
 
-class Jeep(val passengersCapacity: Int) : PassengerTransporting, VehicleMoving {
+class Jeep(val maxPassenger: Int) : PassengerTransporting, VehicleMoving {
 
-    var currentPassCounts = 0
+    var currentPassenger = 0
 
-    override fun getPassengerCapacity(): Int {
-        return this.passengersCapacity
+    override fun loadPassengers(passengers: Int) {
+        if (currentPassenger + passengers <= maxPassenger) {
+            println("Loading passengers: $passengers")
+            currentPassenger += passengers
+            println("Current passengers loaded: $currentPassenger")
+        } else {
+            println("Jeep is overloading by passengers!")
+        }
     }
 
-    override fun getCurrentPassengers(): Int {
-        return currentPassCounts
-    }
-
-    override fun setCurrentPassengers(value: Int) {
-        this.currentPassCounts = value
+    override fun unloadPassengers(passengers: Int) {
+        println("Unloading passengers $passengers from Jeep")
+        currentPassenger -= passengers
+        println("Current passengers in Jeep loaded: $currentPassenger")
     }
 }

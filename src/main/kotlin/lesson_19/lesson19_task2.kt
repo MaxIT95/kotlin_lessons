@@ -12,16 +12,10 @@ fun main() {
 class Item(val id: Int, val name: String, val category: Category) {
 
     fun printInfo() {
-        println("$id, $name, ${category.getName()}")
+        println("$id, $name, ${category.categoryName}")
     }
 }
 
 enum class Category(val categoryName: String) {
     CLOTHING("одежда"), CHANCELLERY("канцелярия"), OTHER("другое");
-
-    fun getName(): String = when (this) {
-        CLOTHING -> CLOTHING.categoryName
-        CHANCELLERY -> CHANCELLERY.categoryName
-        OTHER -> OTHER.categoryName
-    }
 }

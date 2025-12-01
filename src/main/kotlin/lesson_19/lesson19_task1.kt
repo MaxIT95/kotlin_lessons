@@ -8,8 +8,7 @@ fun main() {
 class Aquarium {
 
     fun printTypeFishToAdd() {
-        println("You can add  ${FisnType.GUPPY}, ${FisnType.ANGELFISH}," +
-                " ${FisnType.GOLDFISH}, ${FisnType.SIAMESE_FIGHTING_FISH}")
+        println("You can add  ${FisnType.entries}")
     }
 }
 

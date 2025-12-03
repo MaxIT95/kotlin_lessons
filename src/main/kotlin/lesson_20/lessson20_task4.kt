@@ -6,7 +6,7 @@ fun main() {
 
     val functions: List<() -> Unit> = elements.map { { println("Press button $it!") } }
 
-    for (i in 1..functions.size) {
+    for (i in 0..<functions.size) {
         if (i % 2 == 0) {
             functions[i].invoke()
         }

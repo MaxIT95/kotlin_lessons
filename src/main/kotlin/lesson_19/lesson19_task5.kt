@@ -10,43 +10,31 @@ fun main() {
 
     var name: String
     var gender: Gender
-    var continueAddingPeople: String
-    val fiveHumans = mutableListOf<Human>()
 
-    while (true) {
+    repeat(5) {
         println("Enter name:")
         name = readln()
         println("Enter gender (MALE or FEMALE):")
         gender = readGenderFromConsole(readln())
-        fiveHumans.add(Human(name, gender))
-        println("Human successfully added. Continue? Yes/No")
-        continueAddingPeople = readln()
-        humans.addAll(fiveHumans)
-
-        if (fiveHumans.size % 5 == 0) {
-            println("Added next five person: $fiveHumans")
-            fiveHumans.clear()
-        }
-
-        if (continueAddingPeople.equals("No", ignoreCase = true)) {
-            break
-        }
+        humans.add(Human(name, gender))
+        println("Human successfully added.")
     }
+
+    println(humans)
 }
 
-// пользователь может ошибится, пусть вводит пока не попадет во все буквы)
 fun readGenderFromConsole(value: String): Gender {
-    try {
-        return Gender.valueOf(value)
-    } catch (e: Exception) {
-        println("Error when parsing gender, try again: \n Enter gender (MALE or FEMALE):")
-        return readGenderFromConsole(readln())
+    while (true) {
+        try {
+            return Gender.valueOf(value)
+        } catch (e: Exception) {
+            println("Error when parsing gender, try again: \n Enter gender (MALE or FEMALE):")
+            continue
+        }
     }
 }
 
-data class Human(val name: String, val gender: Gender) {
-
-}
+data class Human(val name: String, val gender: Gender)
 
 enum class Gender {
     MALE, FEMALE

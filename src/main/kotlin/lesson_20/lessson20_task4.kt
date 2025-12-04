@@ -8,9 +8,9 @@ fun main() {
 
     functions.forEachIndexed { index, function ->
 
-        if (index > 1) {
+        if (index > 0) {
 
-            if (index % 2 == 0) {
+            if (index % 2 != 0) {
                 function.invoke()
             }
         }

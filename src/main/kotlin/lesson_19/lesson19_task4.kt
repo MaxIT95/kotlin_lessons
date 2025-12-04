@@ -27,5 +27,7 @@ class Tank {
 }
 
 enum class Bullet(val value: Int) {
-    BLUE(5),  GREEN(10), RED(20)
+    BLUE(5),
+    GREEN(10),
+    RED(20),
 }

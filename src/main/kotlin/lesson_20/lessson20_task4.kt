@@ -6,9 +6,13 @@ fun main() {
 
     val functions: List<() -> Unit> = elements.map { { println("Press button $it!") } }
 
-    for (i in 0..<functions.size) {
-        if (i % 2 == 0) {
-            functions[i].invoke()
+    functions.forEachIndexed { index, function ->
+
+        if (index > 1) {
+
+            if (index % 2 == 0) {
+                function.invoke()
+            }
         }
     }
 }
